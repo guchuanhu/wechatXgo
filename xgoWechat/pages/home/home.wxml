@@ -1,0 +1,45 @@
+<view class="container">
+  <image class="banner" src='../../img/banner0.jpeg' mode='scaleToFill'></image>
+
+  <view class="content">
+    <view class="center_data">
+      <view class="center_child center_border">
+        <image class="img" src="{{store.image}}" mode="aspectFit" />
+        <view class="cen">
+          <view>
+            <text class="cen_t1">{{store.name}}</text>
+          </view>
+          <view class='lineh28'>
+            <text class="cen_t2">{{store.address}}</text>
+          </view>
+        </view>
+        <view bindtap="selfLocation" class="cen_t3">更换门店></view>
+      </view>
+      <view class="center_child">
+        <image class="img" src="../../img/phone.png" mode="aspectFit" />
+        <view class="cen">
+          <view>
+            <text class="cen_t1">{{systemInfo.brand}} {{systemInfo.model}}</text>
+          </view>
+          <view>
+            <text class="cen_t2">自动检测机型</text>
+          </view>
+        </view>
+        <view bindtap="selfGone" class="cen_t3">更换机型></view>
+      </view>
+    </view>
+    <!-- <button class="cen_btn" type="defaults" size="defaultSize" bindtap="selfSingle" hover-class="defaultTap"> 快捷下单 </button>
+    <view class="tips">
+      
+      <text>只需一步，维修客服主动与您联系</text>
+    </view> -->
+    <button class="cen_btn" type="primary" size="defaultSize" bindtap="selfGone" hover-class="defaultTap"> 自助下单 </button>
+    <view class="tips">
+      
+      <text>先查维修价格，再下单</text>
+    </view>
+
+    <!-- <button class="cen_btn_little" bindtap="goGetMain"> 订单查询 </button> -->
+
+  </view>
+</view>

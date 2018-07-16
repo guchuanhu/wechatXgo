@@ -1,0 +1,21 @@
+<view class="container">
+
+    <view class="box">
+        <view class="input">
+            <text>联系电话</text>
+            <input bindblur="bindData" data-set="tel" value="{{tel}}" placeholder="请输入您的手机号码" />
+            <view bindtap="getCode" data-main="{{id}}" value="id" class="btn_code {{text!=='获取验证码'?'btn_codeing':''}}" > {{ text }} </view>
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input bindblur="bindData" data-set="code" value="{{code}}" placeholder="请输入您的短信验证码" />
+        </view>
+
+    </view>
+
+
+    
+    <view class="btn">
+        <button class="cen_btn mar" type="primary" size="defaultSize"  bindtap="validSubmit" hover-class="defaultTap"> 立即查询 </button>
+    </view>
+</view>

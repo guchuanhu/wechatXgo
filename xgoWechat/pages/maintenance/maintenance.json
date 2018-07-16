@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "填写订单",
+    "usingComponents": {
+      "location-box": "../../template/locationBox/location-box"
+    }
+}

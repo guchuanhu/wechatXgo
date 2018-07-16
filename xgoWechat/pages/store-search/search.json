@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "修狗门店查询",
+    "usingComponents": {
+      "location-box": "../../template/locationBox/location-box"
+    }
+}

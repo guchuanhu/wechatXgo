@@ -1,0 +1,36 @@
+.container{
+    text-align: center;
+}
+.img{
+    width: 160rpx;
+    height: 200rpx;
+    margin-top: 20rpx;
+}
+.ok{
+    color: #09bb07;
+    font-size: 25.74rpx;
+}
+.text{
+    text-align: left;
+    margin-top: 50rpx;
+    color: rgb(136, 136, 136);
+    font-size: 23.4rpx;
+    padding: 0 53.82rpx;
+    line-height: 36rpx;
+}
+.line{
+    background-color: rgb(136, 136, 136);
+    width: 702rpx;
+    height: 1rpx;
+    margin: 0 23.4rpx;
+    margin-top: 30rpx;
+}
+.content{
+    text-align: left;
+    font-size: 25.74rpx;
+    margin-top: 40rpx;
+    margin-left: 105.3rpx;
+}
+.btn{
+    margin-top: 100rpx;
+}

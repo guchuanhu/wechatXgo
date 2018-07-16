@@ -1,0 +1,21 @@
+
+{
+  "pages":[
+    "pages/home/home",
+    "pages/maintenance/maintenance",
+    "pages/main-success/success",
+    "pages/select-fault/fault",
+    "pages/select-model/model",
+    "pages/phone-model/phone",
+    "pages/phone-color/color",
+    "pages/quick-single/single",
+    "pages/get-main/main",
+    "pages/store-search/search"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

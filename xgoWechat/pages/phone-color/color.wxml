@@ -1,0 +1,11 @@
+<view class="container">
+    <!-- <view class="word">如果您不确定故障手机的型号请选择其他型号</view> -->
+    <view class="lists">
+        <view class="li_box {{phone.length<index+3?'':'li_border_btn'}}" wx:for="{{phone}}" wx:key="{{item.id}}">
+            <view bindtap="phone" data-id="{{item.id}}" class="li {{index%2===0?'':'li_border'}}" >
+                <view>{{item.name}}</view>
+            </view>
+        </view>
+        
+    </view>
+</view>

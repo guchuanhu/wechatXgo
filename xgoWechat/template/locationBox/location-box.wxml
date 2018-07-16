@@ -1,0 +1,23 @@
+
+    <view wx:if="{{cat.show}}" class="location-box">
+        <view class="pv-container location-item">
+            <view class="lp-top">
+                <text bindtap="closeAndOpen" class="lp-color">取消</text>
+                <text bindtap="closeAndOpen" class="lright">确定</text>
+            </view>
+            <view class="lp-title">
+                所在地区
+            </view>
+            <view class="location-menu">
+                <text wx:for="{{cat.menu}}" wx:key="{{item.id}}" bindtap="menuClick" data-index="{{index}}" class="{{cat.menuChoice===index?'menu-item':''}}">{{item}}</text>
+            </view>
+            <view class="location-content">
+                <view wx:for="{{cat.content[cat.menuChoice]}}" wx:key="{{item.id}}" bindtap="contentClick" data-index="{{index}}" data-menu="{{item.name}}" data-pid="{{item.id}}" class="{{cat.contentChoice[cat.menuChoice]===index?'loca-item':''}}">
+                    <text>{{item.name}}</text>
+                </view>
+            </view>
+            
+        </view>
+    </view>
+
+

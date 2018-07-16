@@ -1,0 +1,35 @@
+<view class="container">
+    <view bindtap="faultOpen" data-topIndex="{{index}}" wx:for="{{phone}}" wx:key="{{item.id}}" class="fault {{item.choice?'fault-choice':''}}">
+        <view class="fault-title">{{item.topName}}</view>
+        <view class="fault-content">
+            <text wx:for="{{item.detail}}" wx:key="{{item.id}}">{{item.detailName}} </text>
+        </view>
+    </view>
+</view>
+
+<view class="submit">
+    <text wx:if="{{fixWell}}" class="sub_word">
+        <text>预计维修金额：</text>
+        <text class="money_color">
+            <text class="money">¥{{fault.dollar.totalF}}</text>
+            <text>.{{fault.dollar.totalL}}</text>
+        </text>
+    </text>
+    <text wx:if="{{!fixWell}}" class="sub_word">
+        <text>选择故障，查看报价</text>
+    </text>
+    <button class="sub_btn {{fault.dollar.total?'':'sub_btn_ban'}}" bindtap="phone" > 提交订单 </button>
+</view>
+
+    <view wx:if="{{fault.show}}" class="fault-box">
+        <view class="fault-tip">
+            <view bindtap="faultChange" data-index="{{index}}" wx:for="{{fault.currentFault.detail}}" wx:key="{{item.id}}" class="cen_btn fault-btn {{fault.currentFaultChoice[index]?'fault-btn-item':''}} "> {{item.detailName}} </view>
+        </view>
+        <view class="fault-tip1">
+            <button class="cen_btn fault-btn-sty" type="default"  bindtap="faultClose"> 取消 </button>
+            <button class="cen_btn fault-btn-sty fault-btn-sty1" type="default"  bindtap="faultSubmit"> 确定 </button>
+        </view>
+    </view>
+
+<!-- <import src="../../template/faultBox/fault-box.axml"/>
+<template is="fault-box" data="{{fault: fault}}"/> -->

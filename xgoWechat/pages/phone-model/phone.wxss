@@ -1,0 +1,29 @@
+
+.container{
+    width: 100%;
+}
+.lists{
+    margin: auto;
+    padding: 0 23.4rpx;
+}
+.li{
+    float: left;
+    box-sizing: border-box;
+    width: 349rpx;
+    height: 88rpx;
+    padding: 30.31rpx 0;
+    text-align: center; 
+    background-color: white;
+    font-size: 25.74rpx;
+    border-bottom: 2rpx solid rgb(187, 187, 187);
+    border-right: 1rpx solid rgb(187, 187, 187);
+}
+.img{
+    background-size: 100%;
+}
+.li_border{
+    border-right: 0;
+}
+.li_border_btn{
+    border-bottom: 0;
+}

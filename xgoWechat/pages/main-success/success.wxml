@@ -1,0 +1,20 @@
+<view class="container">
+    <image class="img" src="../../img/ok.png" mode="aspectFit" />
+    <view class="ok">已收到您的订单!</view>
+    <view wx:if="{{main.whichChoice==='S'}}" class="text">您的订单已下单成功，我们的维修工程师将在预约时间内前往您所填写的详细地址，享受修狗VIP上门服务。部分故障维修可能会造成用户数据丢失，请务必在维修前进行重要数据备份。</view>
+    <view wx:if="{{main.whichChoice==='J'}}" class="text">您的订单已经下单成功， 请于48小时内将手机通过顺丰到付形式邮寄至所选维修中心地址（如需保价，保价及邮寄费用请您自行承担），请在快递中附上纸条，填写您的订单号码及下单手机号，以方便我们收到快递后可以快速确认您的订单信息。部分故障维修可能会造成用户数据丢失，请务必在维修前进行重要数据备份。</view>
+    <view wx:if="{{main.whichChoice==='D'}}" class="text">您的订单已下单成功，请您于预约时间内前往所选维修中心，享受修狗VIP到店服务。部分故障维修可能会造成用户数据丢失，请务必在维修前进行重要数据备份。</view>
+    <view wx:if="{{main.whichChoice==='Q'}}" class="text">您的订单已经下单成功，我们的客服人员会在十分钟内与您取得联系确认您的维修信息，请保持手机畅通。 部分故障维修可能会造成用户数据丢失，请务必在维修前进行重要数据备份。</view>
+    <view class="line"></view>
+    <view wx:if="{{main.name}}" class="content">维修类型: {{main.name}}</view>
+    <view class="content">订单编号: {{main.sn}}</view>
+    <view wx:if="{{main.total}}" class="content">订单价格: ¥{{main.totalF}}.{{main.totalL}}</view>
+    <view class="content">订单状态: 下单成功-已下单</view>
+    <view style='margin-top:160rpx;' class="content">您可通过如下方法查询订单的最新进度：</view>
+    <view bindtap='clickboard' data-url='xgo_cn' class="content">1、关注修狗微信公众号<text style='color:#09bb07;'>xgo_cn</text></view>
+    <view bindtap='clickboard' data-url='http://www.xgo.cn/' class="content">2、登陆官网<text style='color:#09bb07;'>www.xgo.cn</text></view>
+    <!-- <web-view wx:if="{{webview}}" src="http://www.xgo.cn/"></web-view> -->
+    <!-- <view wx:if="{{main.total}}" class="btn">
+        <button class="cen_btn" type="primary"  bindtap="goMainDetail"> 查看订单详情 </button>
+    </view> -->
+</view>

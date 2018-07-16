@@ -1,0 +1,307 @@
+<view class="container">
+    <view class="head">
+        <view class="text">{{maintenanceData.server.name}}</view>
+        <!-- <view class="loca_change">{{maintenanceData.server.name?'':'请选择'}}</view> -->
+        <view class="text fonts25"><view class='mt_title_inline'>产品型号：</view>{{maintenanceData.selectModel.name}} {{maintenanceData.phoneModel.name}}</view>
+        <view class="covering_position"></view>
+        <view class='mt_title'>故障描述：</view>
+        <view wx:for="{{maintenanceData.phoneFault.phone}}" wx:key="{{item.id}}">
+            <view class="li"><!--  wx:7if="{{index<2}}" -->
+                <view class="left">{{item.detailName}}</view>
+            </view>
+        </view>
+        <view class='mt_title'>维修方案：</view>
+        <view wx:for="{{maintenanceData.phoneFault.phone}}" wx:key="{{item.id}}">
+            <view class="li">
+                <view class="left">{{item.repairName}}</view>
+                <view class="right"> ￥{{item.totalF}}.{{item.totalL}}</view>
+            </view>
+        </view>
+        <view wx:if="{{maintenanceData.auth==1}}">
+          <view>
+              <view class="li">
+                  <view class="right"> ￥{{maintenanceData.phoneFault.servicePriceF}}.{{maintenanceData.phoneFault.servicePriceL}}</view>
+                  <view class="right">服务费用：</view>
+              </view>
+          </view>
+          <view wx:if="{{mainten.detail[mainten.choice].id==='S'}}">
+              <view class="li">
+                  <view class="right"> ￥{{maintenanceData.phoneFault.doorPriceF}}.{{maintenanceData.phoneFault.doorPriceL}}</view>
+                  <view class="right">上门费用：</view>
+              </view>
+          </view>
+        </view>
+        <view>
+            <view class="li">
+                <view class="right"> ￥{{maintenanceData.phoneFault.totalsF}}.{{maintenanceData.phoneFault.totalsL}}</view>
+                <view class="right">预计维修费用：</view>
+            </view>
+        </view>
+        <!-- <view wx:if="{{maintenanceData.phoneFault.phone.length>2}}" class="li li_fix">
+            <view wx:if="{{phoneFault}}" bindtap="showFault" class="right up">收起</view>
+            <view wx:if="{{!phoneFault}}" bindtap="showFault" class="right down">展开</view>
+        </view> -->
+    </view>
+
+    <view class="main">
+        <view bindtap="changeMainten" data-index="{{index}}" wx:for="{{mainten.detail}}" wx:key="{{item.id}}" class="main_li {{index===2?'main_li_right':''}} {{mainten.choice===index?'item':''}}">
+            <view class="font24 marb8">{{item.name}}</view>
+            <view class="font18">{{item.word}}</view>
+        </view>
+    </view>
+    
+    <view wx:if="{{mainten.detail[mainten.choice].id==='S'}}" class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input bindblur="bindData" data-set="customer.S.name" value="{{customer.S.name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input">
+            <text>联系电话</text>
+            <input bindblur="bindData" data-set="customer.S.tel" value="{{customer.S.tel}}" placeholder="请输入您的手机号码" />
+            <view bindtap="getCodeWait" data-main="{{mainten.detail[mainten.choice].id}}" value="mainten.detail[mainten.choice].id" class="btn_code {{mainten.detail[mainten.choice].text!=='获取验证码'?'btn_codeing':''}}" > {{ mainten.detail[mainten.choice].text }} </view>
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input bindblur="bindData" data-set="customer.S.code" value="{{customer.S.code}}" placeholder="请输入您的短信验证码" />
+        </view>
+
+
+        <view bindtap="locaShow" data-numberCat='0' data-index="0" data-type="{{mainten.detail[mainten.choice].id}}" class="input">
+            <text>区域选择</text>
+            <input disabled="true" value="{{customer.cat[0].item.name?(customer.cat[0].item.name.length===3?(customer.cat[0].item.name[0]+' '+customer.cat[0].item.name[1]+' '+customer.cat[0].item.name[2]):''):''}}" />
+            <view class="location">{{customer.cat[0].item.name?(customer.cat[0].item.name.length===3?'':'请选择'):'请选择'}}</view>
+        </view>
+
+
+        <view class="input border0">
+            <text>详细地址</text>
+            <input class="detail_input" bindblur="bindData" data-set="customer.S.address" value="{{customer.S.address}}"  placeholder="请输入您的详细地址" />
+        </view>
+
+        <!-- <view class="line"></view>
+        <view bindtap="pickOpen" data-index="0" class="input border0">
+            <text>上门时间</text>
+            <input disabled="true" value="{{currentPicker[0].name}}" placeholder="请选择上门服务时间" />
+        </view> -->
+
+        <view class="line"></view>
+        <view hidden="{{wordShow}}" class="input textarea border0">
+            <text>备注</text>
+             <textarea hidden="{{pick.show||locaShowCat}}" bindblur="bindData" data-set="customer.S.other" style="font-size:25rpx;padding-top:20rpx;" placeholder="在这里写下您想对维修工程师说的话~~~" /> 
+        </view>
+    </view>
+
+
+
+    <view wx:if="{{mainten.detail[mainten.choice].id==='D'}}" class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input bindblur="bindData" data-set="customer.D.name" value="{{customer.D.name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input">
+            <text>联系电话</text>
+            <input bindblur="bindData" data-set="customer.D.tel" value="{{customer.D.tel}}" placeholder="请输入您的手机号码" />
+            <view bindtap="getCodeWait" data-main="{{mainten.detail[mainten.choice].id}}" value="mainten.detail[mainten.choice].id" class="btn_code {{mainten.detail[mainten.choice].text!=='获取验证码'?'btn_codeing':''}}" > {{ mainten.detail[mainten.choice].text }} </view>
+            
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input bindblur="bindData" data-set="customer.D.code" value="{{customer.D.code}}" placeholder="请输入您的短信验证码" />
+        </view>
+    </view>
+
+
+
+    <view wx:if="{{mainten.detail[mainten.choice].id==='J'}}" class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input bindblur="bindData" data-set="customer.J.name" value="{{customer.J.name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input">
+            <text>联系电话</text>
+            <input bindblur="bindData" data-set="customer.J.tel" value="{{customer.J.tel}}" placeholder="请输入您的手机号码" />
+            <view bindtap="getCodeWait" data-main="{{mainten.detail[mainten.choice].id}}" value="mainten.detail[mainten.choice].id" class="btn_code {{mainten.detail[mainten.choice].text!=='获取验证码'?'btn_codeing':''}}" > {{ mainten.detail[mainten.choice].text }} </view>
+        </view>
+        <view class="input">
+            <text>验证码</text>
+            <input bindblur="bindData" data-set="customer.J.code" value="{{customer.J.code}}" placeholder="请输入您的短信验证码" />
+        </view>
+
+        <view class="input">
+            <text>IMEI号</text>
+            <input bindblur="bindData" data-set="customer.J.imei" value="{{customer.J.imei}}" placeholder="请输入IMEI号" />
+        </view>
+
+        <view bindtap="locaShow" data-numberCat='1' data-index="1" class="input">
+            <text>回寄区域</text>
+            <input disabled="true" value="{{customer.cat[1].item.name?(customer.cat[1].item.name.length===3?(customer.cat[1].item.name[0]+' '+customer.cat[1].item.name[1]+' '+customer.cat[1].item.name[2]):''):''}}" />
+            <view class="location">{{customer.cat[1].item.name?(customer.cat[1].item.name.length===3?'':'请选择'):'请选择'}}</view>
+        </view>
+        <view class="input border0">
+            <text>详细地址</text>
+            <input class="detail_input" bindblur="bindData" data-set="customer.J.address" value="{{customer.J.address}}" placeholder="请输入您的详细地址" />
+        </view>
+
+        <view class="line"></view>
+        <view hidden="{{wordShow}}" class="input textarea border0">
+            <text>备注</text>
+            <textarea hidden="{{pick.show||locaShowCat}}" bindblur="bindData" data-set="customer.J.other" style="font-size:25rpx;padding-top:20rpx;z-index:1;" placeholder="在这里写下您想对维修工程师说的话~~~" />
+        </view>
+    </view>
+
+
+
+    <view class='word_box'>
+      <checkbox-group class="disinline" bindchange="boxCheckChange">
+        <label>
+          <checkbox value='1' class='wordb_check'/>
+          阅读并同意
+        </label>
+      </checkbox-group>
+      <span bindtap="wordChangeShow" class="wordb_bocor">《修狗用户协议》</span>
+    </view>
+
+
+    
+    <view class="btn">
+        <button class="cen_btn mar" type="primary" size="defaultSize"  bindtap="validSubmit" hover-class="defaultTap"> 立即下单 </button>
+    </view>
+</view>
+<location-box bindmyevent="onMyEvent" boxLocaShow="{{locaShow}}" initDataCat="{{customer.cat}}" numberCat="{{numberCat}}" typeId="{{mainten.detail[mainten.choice].id}}"></location-box>
+
+<!-- <import src="../../template/pickerBox/picker-box.axml"/>
+<template is="picker-box" data="{{pick: pick}}"/>
+
+<import src="../../template/locationBox/location-box.axml"/>
+<template is="location-box" data="{{cat: cat}}"/> -->
+
+<view wx:if="{{pick.show}}" class="picker-box">
+    <view class="pv-container picker-item">
+        <view class="p-top">
+            <text bindtap="pickClose" class="p-color">取消</text>
+            <text bindtap="pickClose" class="right">确定</text>
+        </view>
+        <view class="pv-left">
+            <picker-view value="{{value}}" bindchange="pickChange">
+                <picker-view-column class="picker-column">
+                    <view wx:for="{{pick.day}}" wx:key="{{item.id}}">{{item.name}}</view>
+                </picker-view-column>
+                <picker-view-column class="picker-column">
+                    <view wx:for="{{pick.time}}" wx:key="{{item.id}}">{{item}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+        <view class="pv-right">
+            {{value}}
+        </view>
+    </view>
+</view>
+
+
+
+<view class='word_pipe' wx:if="{{wordShow}}">
+    <view class='wordp_content'>
+      <p class="wordp_center">用户协议</p>
+      <p class="wordp1">导言</p>
+      <p class="wordp2">欢迎您选择修狗进行服务！<br/>
+    请在服务前确保认真阅读本《服务协议》（以下简称“协议”）并确保理解协议中各项条款，在接受服务前请确定接受或不接受此协议，除非您已阅读并接受本协议条款，否则您无法使用修狗提供的服务。在您作出操作的行为时将视为接受协议内容并同意协议内各项条款。如您未满18周岁，请在法定监护人的陪同下阅读本协议。</p>
+      <p class="wordp1">协议的范围</p>
+      <p class="wordp2">1.1 【协议适用主体范围】<br/>
+    本协议是您与修狗之间关于用户使用修狗相关服务所订立的协议。“修        狗”是指修狗网站及其相关服务可能存在的运营关联单位。“用户”是指使用修狗相关服务的使用人，在本协议中更多地称为“您”。<br/>
+    1.2 【本许可协议指向内容】<br/>
+    本协议项下的许可内容是指修狗向用户提供的包括但不限于移动设备的维修服务（以下简称“服务”）。<br/>
+    1.3 【协议关系及冲突条款】<br/>
+    本协议可由修狗随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在本网站查阅最新版协议条款。在修狗修改协议条款后，如果用户不接受修改后的条款，请立即停止使用修狗提供的服务，用户继续使用修狗提供的服务将被视为接受修改后的协议。
+    </p>
+    <p class="wordp1">个人隐私信息保护</p>
+    <p class="wordp2">2.1   用户在注册账号或使用本服务的过程中，可能需要填写或提交一些必要的信息（包括但不限于联系人、联系地址、联系方式等），如用户提交的信息不完整或不符合法律法规的规定，则用户无法使用本服务并承担相应后果，如由于您填写信息不准确造成无法正常进行服务，修狗将不承担由此造成的损失。<br/>
+    2.2   尊重用户个人隐私信息的私有性是修狗的一贯制度，修狗将采取技术措施和其他必要 措施，确保用户个人隐私信息安全，防止在本服务中收集的用户个人隐私信息泄露、毁损或丢失。在发生前述情形或者修狗发现存在发生前述情形的可能时，将及时采取补救措施。<br/>
+    2.3   修狗未经用户同意不向任何第三方公开、 透露用户个人隐私信息。但以下特定情形除外：<br/>
+    2.3.1   修狗根据法律法规规定或有权机关的指示提供用户的个人隐私信息； <br/>
+    2.3.2   由于用户将其个人隐私信息告知他人或与他人共享个人隐私信息，由此导致的任何个人信息的泄漏，或其他非因修狗原因导致的个人隐私信息的泄露； <br/>
+    2.3.3   用户自行向第三方公开其个人隐私信息； <br/>
+    2.3.4   用户与修狗及合作维修单位之间就用户个人隐私信息的使用公开达成约定，修狗因此向合作维修单位公开用户个人隐私信息； <br/>
+    2.3.5   任何由于黑客攻击、电脑病毒侵入及其他不可抗力事件导致用户个人隐私信息的泄露。 <br/>
+    2.4   用户同意修狗可在以下事项中使用用户的个人隐私信息： <br/>
+    2.4.1   修狗向用户及时发送重要通知，如个人服务信息、本协议条款的变更； <br/>
+    2.4.2   修狗内部进行审计、数据分析和研究等，以改进修狗的产品、服务和与用户之间的沟通； <br/>
+    2.4.3   依本协议约定，修狗管理、审查用户信息及进行处理措施； <br/>
+    2.4.4   适用法律法规规定的其他事项。<br/>
+    除上述事项外，如未取得用户事先同意，修狗不会将用户个人隐私信息使用于任何其他用途。<br/>
+    2.5   在您将移动电子设备交付修狗提供服务前，请自行将设备内信息进行备份，由于维修过程中可能存在更换零部件等操作，修狗无法保证在维修后您设备中的信息依然完整保留，如出现用户数据遗漏丢失等问题修狗将不承担任何责任。 <br/>
+    2.6  为了改善修狗的服务，向用户提供更好的服务体验，修狗或可会自行收集使用或向第三方提供用户的非个人隐私信息。<br/> 
+    </p>
+    <p class="wordp1">关于本服务方式及权责</p>
+    <p class="wordp2">3.1   修狗维修服务平台根据不同的厂家授权，以及维修网络的覆盖，向不同区域的用户提供上门、到店、邮寄等三种场景的维修服务。用户可以根据自己的习惯或便利性自行选择服务场景。 <br/>
+3.2   关于邮寄维修 <br/>
+3.2.1   在邮寄维修中，修狗承担双向运费；请您在寄送待检修设备时选择顺丰速运，并采用到付的方式邮寄。如在邮寄设备时，如自主选择保价邮寄，保价费及快递费只能由您自行承担。 <br/>
+3.2.2   修狗不会承担您在邮寄过程中因丢失、损坏等因素对设备造成的任何损失及责任。若待检修设备于寄送过程中受损或丢失，修狗会且仅会提供相关资料配合您向物流商进行维权。 <br/>
+3.2.3   修狗会优先选择顺丰将修复后的设备寄还予您，如寄还区域不支持顺丰快递，修狗有权选择其他快递及物流方式将设备寄出；如若此过程中出现意外（需物流工作人员提供相关证明），修狗会且仅会承担与设备硬件相同型号及品相（不保证地区版本）的赔偿责任。 <br/>
+3.2.4   修狗将按照订单中提交的收货地址将设备寄还予您，若由于地址错误或地址更改而用户未及时告知而造成设备无法正常派送，修狗将不承担由此造成的任何损失及责任。 <br/>
+3.2.5   目前修狗仅为中国大陆地区用户提供有限品牌设备维修服务，请您在使用服务前确定您的移动电子设备属于修狗可维修的产品。 <br/>
+3.2.6   当出现以下情况时，修狗有权修改服务内容或拒绝向您提供服务： <br/>
+3.2.6.1   由于机型陈旧或配件供应短缺因素，无法提供高品质配件（部分型号原装配件及原厂品质配件,原厂品质配件指制造工艺及材料等品质等同于原装，非指官方相关授权证明。）； <br/>
+3.2.6.2   邮寄设备与提交的设备信息不符； <br/>
+3.2.7   请您务必于下单前备份并清除待检修设备的敏感数据。修狗不会承担该设备于维修过程中因数据丢失、泄露等因素而造成的任何损失及责任。 <br/>
+3.3  关于上门维修 <br/>
+3.3.1   修狗上门维修服务，修狗不会向您单独收取上门费用。 <br/>
+3.3.2   修狗上门工程师在接到您的维修订单后会提前与您预约维修时间及地址，届时工程师会准时到达预约地点为您进行服务，请您务必保持手机畅通，并在预约地点进行等待。 <br/>
+3.3.3  修狗工程师在维修前后都会对手机进行功能检测，您需要协助工程师解开屏幕锁定及账号锁定。 <br/>
+3.3.4   维修完成并经您检查确认手机所报修故障已修复后，您需要通过现金、微信、支付宝、银行卡转账形式对订单费用进行支付；在支付以前工程师有义务告知您该订单的全部维修费用，并取得您的确认才开始维修。 <br/>
+3.3.5   如遇交通拥堵、恶劣天气等不可抗力因素，在提前与您沟通确认后，修狗有权利对上门时间及地点进行调整。 <br/>
+3.4   关于预约到店维修 <br/>
+3.4.1   修狗用户在修狗拥有线下门店的城市可选择预约到店服务。 <br/>
+3.4.2   您可以在线进行门店预约，修狗系统会告知您所在城市的线下门店地址及需要您选择预约时间，下单后在预约时间内到店即可享受VIP免排队服务。 <br/>
+3.4.3   如遇门店在预约时间内因配件、人员等因素无法在您预约时间内进行服务，修狗有义务提前对您进行告知并与您协商对预约时间进行修改 <br/>
+3.4.4   到店维修完成并经您检查确认设备问题已经修复后，你可通过支付宝、微信、现金等方式进行付款；付款成功后，设备将交还给您，届时服务完成。</p>
+    <p class="wordp1">关于维修流程的权责</p>
+    <p class="wordp2">4.1   维修过程中，如因维修失误而造成的其他故障，修狗承诺将免费修复，不额外收取费用；如该设备经过多次维修后仍无法修复，或因修狗原因将设备丢失，修狗将向您赔偿一部同等型号同等品相或等价不保证地区版本）的设备。 <br/>
+4.2   对于因跌落、磕碰、挤压或进液面积达10%以上而丧失部分或全部功能的设备，修狗仅对您指定需修复的功能负维修责任。对于设备其他已知或未知的故障不承担任何责任。 <br/>
+4.3   请您务必于下单时认真填写待检修设备的相关信息。修狗不会承担因您所提交信息的错误或缺漏而导致设备于维修过程中出现任何故障的责任。 <br/>
+4.4   设备维修完成后，如在60天内不在线支付（支付宝、微信支付）维修费用，修狗视您放弃该设备的处置权，修狗将获得设备处理权。</p>
+    <p class="wordp1">收费服务</p>
+    <p class="wordp2">5.1  修狗的服务是以收费方式提供的，您应当遵守相关的协议。 <br/>
+5.2  修狗可能根据实际需要对收费服务的收费标准、方式进行修改和变更，前述修改、变更或开始收费前，修狗将在相应服务页面进行通知或公告。如果您不同意上述修改、变更或付费内容，则应停止使用该服务。</p>
+    <p class="wordp1">关于保修服务的权责</p>
+    <p class="wordp2">6.1   在修狗维修且维修成功的设备的故障点实施180天保修，但以下情况除外： <br/>
+6.1.1 出现维修故障点之外的故障； <br/>
+6.1.2   人为（包括摔损、进液、不可抗外力等）损坏； <br/>
+6.1.3   主板维修机器维修后保修期为30天； <br/>
+6.1.4   进水入液机器维修后保修期为30天； <br/>
+6.2   对于由客户提供配件，修狗提供更换服务的保修权责说明： <br/>
+6.2.1   对于配件的质量问题修狗不承担责任。 <br/>
+6.2.2   更换后修狗不承担任何形式的保修服务。 <br/>
+6.2.3   如果因为配件质量问题导致更换不成功的，仍然需要收取服务费。<br/>
+以上条款最终解释权归修狗所有。</p>
+    <p class="wordp1">关于发票</p>
+    <p class="wordp2">用户如申请开具发票，需通过订单备注或告知客服及维修工程师的形式提供开票信息及收件邮箱或地址，申请后7-15个工作日由当地维修中心为您开具，默认优先开发票方式为电子发票。</p>
+    <p class="wordp1">法律责任</p>
+    <p class="wordp2">8.1   用户理解并同意，修狗有权依合理判断对违反有关法律法规或本协议规定的行为进行处罚，对违法违规的任何用户采取适当的法律行动，并依据法律法规保存有关信息向有关部门报告等，用户应承担由此而产生的一切法律责任。 <br/>
+8.2 用户理解并同意，因用户违反本协议约定，导致或产生的任何第三方主张的任何索赔、要求或损失，包括合理的律师费，用户应当赔偿修狗与合作维修工程师、关联单位，并使之免受损害。</p>
+    <p class="wordp1">不可抗力及其他负责事由</p>
+    <p class="wordp2">9.1   用户理解并确认，在使用本服务的过程中，可能会遇到不可抗力等风险因素，使本服务发生中断。不可抗力是指不能预见、不能克服并不能避免且对一方或双方造成重大影响的客观事件，包括但不限于自然灾害如洪水、地震、瘟疫流行和风暴等以及社会事件如战争、动乱、政府行为等。出现上述情况时，修狗将努力在第一时间与相关单位配合，及时进行恢复，但是由此给用户造成的损失，修狗及合作维修单位在法律允许的范围内免责。 <br/>
+9.2   本服务同大多数互联网服务一样，受包括但不限于用户原因、网络服务质量、社会环境等因素的差异影响，可能受到各种安全问题的侵扰，如他人利用用户的资料，造成现实生活中的骚扰；用户访问的其他网站中含有“特洛伊木马”等病毒，威胁到用户的计算机信息和数据的安全，继而影响本服务的正常使用等等。用户应加强信息安全及资料的保护意识，要注意加强密码保护，以免遭致损失和骚扰。 <br/>
+9.3   用户理解并确认，本服务存在因不可抗力、计算机病毒或黑客攻击、系统不稳定、用户所在位置、用户关机以及其他任何技术、互联网络、通信线路原因等造成的服务中断或不能满足用户要求的风险，因此导致的任何损失，修狗不承担任何责任。 <br/>
+9.4   用户理解并确认，在使用本服务过程中存在来自任何他人的包括误导性的、欺骗性的、威胁性的、诽谤性的、令人反感的或非法的信息，或侵犯他人权利的匿名或冒名的信息，以及伴随该等信息的行为，因此导致的用户或第三方的任何损失，修狗不承担任何责任。 <br/>
+9.5   修狗依据法律法规、本协议约定获得处理违法违规或违约内容的权利，该权利不构成修狗的义务或承诺，修狗不能保证及时发现违法违规或违约行为或进行相应处理。 <br/>
+9.6 用户理解并确认，对于修狗向用户提供的下列产品或者服务的质量缺陷及其引发的任何损失，修狗无需承担任何责任： <br/>
+9.6.1   修狗向用户免费提供的服务 <br/>
+9.6.2   修狗向用户赠送的任何产品或者服务</p>
+    <p class="wordp1">其他</p>
+    <p class="wordp2">10.1 【协议的生效与变更】 <br/>
+您使用本服务即视为您已阅读并同意受本协议的约束。修狗有权在必要时修改本协议条款。您可以在相关页面中查阅最新的协议条款。本协议条款变更后，如果您继续使用本服务，即视为您已接受修改后的协议。如果您不接受修改后的协议，应当停止使用本服务。 <br/>
+10.2  【单方解除权】 <br/>
+若您违反本协议或有关法律法规，修狗有权立刻解除本协议，您需承担由此产生的一切损失及责任。 <br/>
+10.3  【协议签订地】 <br/>
+本协议签订地为中华人民共和国北京市海淀区。 <br/>
+10.4  【适用法律】 <br/>
+本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律（不包括冲突法）。 <br/>
+10.5  【争议解决】 <br/>
+若您和修狗之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，您同意将纠纷或争议提交本协议签订地有管辖权的人民法院管辖。 <br/>
+10.6  【条款标题】 <br/>
+本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。 <br/>
+10.7  【条款效力】 <br/>
+本协议条款无论因何种原因部分无效或不可执行，其余条款仍有效，对双方具有约束力。 </p>
+    </view>
+    <view bindtap="wordChangeShow" class='wordp_back'>返回</view>
+</view>

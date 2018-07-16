@@ -1,0 +1,13 @@
+<view class="container">
+    <view class="word">如果您不确定故障手机的品牌请选择其他品牌</view>
+    <view class="lists">
+        <view class="li_box {{(index+1)>phone.length-3?'':'li_border_btn'}}" wx:for="{{phone}}" wx:key="{{item.id}}">
+            <view bindtap="phone" data-id="{{item.id}}" data-name="{{item.name}}" data-auth="{{item.auth}}" class="li {{(index+1)%3===0?'':'li_border'}} ">
+                <image wx:if="{{item.auth==1}}" class="img_rt" src='../../img/img_rt.png' mode="" />
+                <image wx:if="{{item.id!==false}}" class="img" src="{{item.wapPic}}" mode="" />
+                <view wx:if="{{item.id!==false}}">{{item.id==='89'?'其他品牌':item.name}}</view>
+            </view>
+
+        </view>
+    </view>
+</view>

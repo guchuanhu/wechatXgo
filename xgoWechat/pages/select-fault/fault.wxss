@@ -1,0 +1,104 @@
+.container{
+    padding-bottom: 150rpx;
+}
+.banner {
+    display: flex;
+    height: 339.3rpx;
+    width: 100%;
+    background: url(/img/banner.jpg) center no-repeat;
+    background-size: cover;
+}
+.fault{
+    position: relative;
+    overflow: hidden;
+    margin: 0 37.44rpx;
+    margin-top: 23.4rpx;
+    padding: 25.74rpx 60.84rpx;
+    background-color: white;
+    border: 1px solid  rgb(9, 187, 7);
+    border-radius: 5rpx;
+}
+.fault-choice{
+    border: 1px solid  rgb(9, 187, 7);
+}
+.fault-choice::after{
+    position: absolute;
+    top: -15rpx;
+    right: -32rpx;
+    font-size: 30rpx;
+    content: "L";
+    display: inline-block;
+    color: white;
+    background-color: rgb(9, 187, 7);
+    width: 100rpx;
+    padding-top: 10rpx;
+    padding-bottom: 5rpx;
+    text-align: center;
+    transform:rotateX(180deg) rotate(140deg);
+}
+.fault-title{
+    font-size: 25.74rpx;
+    padding-bottom: 17.55rpx;
+    margin-bottom: 12rpx;
+    border-bottom: 1rpx solid rgb(187, 187, 187);
+}
+.fault-content{
+    color: rgb(187, 187, 187);
+    font-size: 25.74rpx;
+    line-height: 34rpx;
+}
+
+
+.content{
+    padding: 0 23.4rpx;
+}
+.center_data{
+    box-sizing: border-box;
+    width: 702rpx;
+    border:1rpx solid rgb(227, 227, 231);
+    border-radius: 15rpx;
+    margin: auto;
+    margin-top: -70.2rpx;
+    margin-bottom: 80.2rpx;
+    padding: 0 23.4rpx;
+    background-color: white;
+    box-shadow: 0 3rpx 20rpx #999;
+}
+.submit{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    font-size: 29.25rpx;
+}
+.sub_word{
+  height:49rpx;
+    display: inline-block;
+    padding: 37.44rpx 0 37.44rpx 35rpx;
+}
+.money{
+    font-size: 39.78rpx;
+}
+.sub_btn{
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+    float: right;
+    width: 269.1rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border: 0;
+    border-radius: 5rpx;
+    font-size: 29.25rpx;
+    color: white;
+    background-color: rgb(9, 187, 7);
+
+}
+.sub_btn_ban{
+    color: rgb(9, 187, 7);
+    border: 1rpx solid rgb(9, 187, 7);
+    background-color: white;
+
+}
+.money_color{
+    color:#f23a2a;
+}

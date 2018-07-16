@@ -1,0 +1,137 @@
+
+.banner {
+    display: flex;
+    height: 339.3rpx;
+    width: 100%;
+    /* background: url('../../img/banner0.jpg') center no-repeat; */
+    background-size: cover;
+}
+
+.content{
+    padding: 0 23.4rpx;
+    position: relative;
+    z-index: 1;
+}
+.center_data{
+    box-sizing: border-box;
+    width: 702rpx;
+    border:1rpx solid rgb(227, 227, 231);
+    border-radius: 15rpx;
+    margin: auto;
+    margin-top: -70.2rpx;
+    margin-bottom: 80.2rpx;
+    padding: 0 23.4rpx;
+    background-color: white;
+    box-shadow: 0 3rpx 20rpx #999;
+}
+.center_child{
+    padding-bottom: 15rpx;
+    padding-top: 23.4rpx;
+}
+.center_border{
+    border-bottom: 1rpx solid #aaa;
+}
+.center_child::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.lineh28{
+  line-height:28rpx;
+}
+.cen{
+    box-sizing: border-box;
+    float: left;
+    width: 420rpx;
+    padding-left: 20rpx;
+    padding-top: 1rpx;
+}
+.cen_t1{
+    font-size: 27rpx;
+}
+.cen_t2{
+    font-size: 23.4rpx;
+}
+.cen_t3{
+    float: left;
+    font-size: 21.06rpx;
+    color: rgb(140, 140, 140);
+    margin-top: 40rpx;
+}
+.img{
+    float: left;
+    width: 117rpx;
+    height: 117rpx;
+}
+.right{
+    float: left;
+    font-size: 14px;
+    color: #777;
+    margin-top: 40rpx;
+}
+.cen_btn_posi{
+    margin-top: -30rpx;
+}
+
+.cen_btn_little{
+    width: 220rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin: auto;
+    margin-top: 70rpx;
+    font-size: 29.25rpx;
+    color: rgb(9, 187, 7);
+    border: 1px solid rgb(9, 187, 7);
+    background-color: rgb(245, 245, 249);
+    border-radius: 4rpx;
+}
+.tips{
+    margin: 30rpx 0;
+    position: relative;
+    text-align: center;
+    font-size: 21.06rpx;
+    color: rgb(191, 191, 191);
+}
+.tips::after{
+    content: "";
+    display: block;
+    width: 100%;
+    position: relative;
+    bottom: 12rpx;
+    border-bottom: 1rpx solid rgb(187, 187, 187);
+}
+.tips text{
+    padding: 0 10px;
+    background-color: rgb(245, 245, 249);
+    position: relative;
+    z-index: 9;
+}
+.submit{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    font-size: 29.25rpx;
+}
+.sub_word{
+    display: inline-block;
+    padding: 37.44rpx 0 37.44rpx 35rpx;
+}
+.money{
+    font-size: 39.78rpx;
+}
+.sub_btn{
+    float: right;
+    width: 269.1rpx;
+    height: 119.34rpx;
+    border: 0;
+    border-radius: 0;
+    font-size: 29.25rpx;
+    color: white;
+    background-color: rgb(136, 136, 136);
+
+}
+.sub_btn_ban{
+    background-color: rgb(187, 187, 187);
+
+}

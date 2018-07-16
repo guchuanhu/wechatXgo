@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="word">如果您不确定故障手机的型号请选择其他型号</view>
+    <view class="lists">
+        <view bindtap="phone" data-id="{{item.id}}" data-name="{{item.name}}" class="li {{index%2===0?'':'li_border'}} {{phone.length<index+3?'li_border_btn':''}}" wx:for="{{phone}}" wx:key="{{item.id}}">
+            <view>{{item.name}}</view>
+        </view>
+    </view>
+</view>
+
+
+
+    <view wx:if="{{popShow}}" class="fault-box">
+        <view class="fault-tip">
+            <view bindtap='changeItem' data-index='2' class="cen_btn fault-btn  {{show==2?'fault-btn-item':''}} "> 保修期内 </view>
+            <view bindtap='changeItem' data-index='3' class="cen_btn fault-btn {{show==3?'fault-btn-item':''}} "> 保修期外 </view>
+        </view>
+        <view class="fault-tip1">
+            <button class="cen_btn fault-btn-sty" type="default"  bindtap="phoneClose"> 取消 </button>
+            <button class="cen_btn fault-btn-sty fault-btn-sty1" type="default"  bindtap="phoneGo"> 确定 </button>
+        </view>
+    </view>

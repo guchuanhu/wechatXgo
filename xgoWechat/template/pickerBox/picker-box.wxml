@@ -1,0 +1,24 @@
+<template name="picker-box">
+    <view wx:if="{{pick.show}}" class="picker-box">
+        <view class="pv-container picker-item">
+            <view class="p-top">
+                <text bindtap="pickClose" class="p-color">取消</text>
+                <text bindtap="pickClose" class="right">确定</text>
+            </view>
+            <view class="pv-left">
+                <picker-view value="{{value}}" onChange="pickChange">
+                    <picker-view-column>
+                        <view wx:for="{{pick.day}}" wx:key="{{item.id}}">{{item.name}}</view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{pick.time}}" wx:key="{{item.id}}">{{item}}</view>
+                    </picker-view-column>
+                </picker-view>
+            </view>
+            <view class="pv-right">
+                {{value}}
+            </view>
+        </view>
+    </view>
+</template>
+

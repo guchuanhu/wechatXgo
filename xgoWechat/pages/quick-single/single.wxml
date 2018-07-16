@@ -1,0 +1,16 @@
+<view class="container">
+    <view class="word">只需一步，维修客服将主动与您联系</view>
+    <view class="box">
+        <view class="input">
+            <text>联系人</text>
+            <input bindblur="bindData" data-set="name" value="{{name}}" placeholder="请输入您的姓名" />
+        </view>
+        <view class="input border0">
+            <text>联系电话</text>
+            <input bindblur="bindData" data-set="tel" value="{{tel}}" placeholder="请输入您的手机号码" />
+        </view>
+    </view>
+    <view class="btn">
+        <button class="cen_btn mar" type="primary" size="defaultSize"  bindtap="getSubWait" hover-class="defaultTap"> 立即下单 </button>
+    </view>
+</view>

@@ -1,0 +1,174 @@
+/**app.wxss**/
+page{
+  background-color: rgb(245, 245, 249);
+}
+
+
+.word{/* 提示小黄条 */
+    width: 100%;
+    height: 70.2rpx;
+    line-height: 70rpx;
+    font-size: 22.23rpx;
+    text-align: center;
+    color: rgb(249, 135, 82);
+    background-color: rgb(254, 252, 237);
+}
+
+.cen_btn{/* 默认全屏按钮 */
+    width: 100%;
+    font-size: 29.25rpx;
+    padding-top:10rpx;
+    padding-bottom:10rpx;
+
+}
+
+.btn{
+    padding: 0 23.4rpx;
+}
+.box{/* 输入表单包裹 */
+    position: relative;
+    margin-bottom: 93.6rpx;
+    padding: 0 23.4rpx;
+    background-color: white;
+}
+.input{
+    position: relative;
+    line-height: 93.6rpx;
+    font-size: 25.74rpx;
+    padding-left: 52.65rpx;
+    border-bottom: 1px solid rgb(245, 245, 249);
+}
+.input input{
+    box-sizing: border-box;
+    height: 90rpx;
+    width: 300rpx;
+    position: absolute;
+    top:0;
+    left: 196.56rpx;
+    font-size: 25.74rpx;
+    border: 0;
+    background-color: white;
+}
+.input textarea{
+    display: inline-block;
+    box-sizing: border-box;
+    height: 200rpx;
+    width: 460rpx;
+    position: absolute;
+    left: 196.56rpx;
+    z-index: 1;
+}
+.border0{
+    border: 0;
+}
+.textarea{
+    height: 200rpx;
+}
+
+/* 时间组件S */
+.picker-box{
+    position: fixed;
+    top: 0;
+    z-index: 99999999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+}
+.picker-item{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+}
+.p-top{
+    padding: 23.4rpx;
+    border:1px solid #999;
+    border-right: 0;
+    border-left: 0;
+    background-color:white;
+}
+.p-top .right{
+    float: right;
+}
+.p-top .p-color{
+    color: rgb(187, 187, 187);
+}
+.picker-column{
+  height:500rpx;
+  text-align:center;
+}
+/* 时间组件E */
+
+
+
+/* 故障组件S */
+.fault-box{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+}
+.fault-tip{
+    display: block;
+    box-sizing: border-box;
+    width: 650rpx;
+    max-height: 500rpx;
+    overflow-y: scroll;
+    padding: 66rpx 43rpx;
+    margin: auto;
+    margin-top: 300rpx;
+    background-color: white;
+    border: 0;
+    border-top-right-radius: 5rpx;
+    border-top-left-radius: 5rpx;
+}
+
+.fault-tip1{
+    display: block;
+    box-sizing: border-box;
+    width: 650rpx;
+    padding: 40rpx 43rpx;
+    margin: auto;
+    background-color: white;
+    border: 0;
+    border-bottom-right-radius: 5rpx;
+    border-bottom-left-radius: 5rpx;
+}
+.fault-btn{
+    line-height: 77rpx;
+    height: 77rpx;
+    font-size: 25.74rpx;
+    margin-bottom: 16.38rpx;
+    border-radius: 5rpx;
+    text-align: center;
+    border: 1rpx solid  rgb(214, 214, 214);
+    background-color: rgb(250, 250, 250);
+}
+.fault-btn-item{
+    background-color: rgb(9, 187, 9);
+    color: white;
+    border: 1rpx solid rgb(9, 187, 9);
+}
+.fault-btn-sty{
+    box-sizing: border-box;
+    height: 88.92rpx;
+    line-height: 70rpx;
+    display: inline-block;
+    width: 269.1rpx;
+    border: 1rpx solid  rgb(214, 214, 214);
+    color:  rgb(41, 146, 227);
+    background-color: rgb(250, 250, 250);
+}
+.fault-btn-sty1{
+    box-sizing: border-box;
+    display: inline-block;
+    height: 88.92rpx;
+    line-height: 70rpx;
+    width: 269.1rpx;
+    color: white!important;
+    background-color:rgb(9, 187, 7)!important;
+    margin-left: 23.4rpx;
+}
+
+/* 故障组件E */

@@ -1,0 +1,81 @@
+
+/* 地址组件S */
+.location-box{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+}
+.location-item{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+}
+.lp-top{
+    padding: 23.4rpx;
+    border:1px solid rgb(245, 245, 245);
+    border-right: 0;
+    border-left: 0;
+    background-color:white;
+}
+.lp-top .lright{
+    float: right;
+}
+.lp-top .lp-color{
+    color: rgb(187, 187, 187);
+}
+.lp-title{
+    padding: 23.4rpx;
+    border-bottom:1px solid rgb(245, 245, 245);
+    text-align: center;
+    font-size: 30.42rpx;
+}
+.location-menu{
+    padding: 23.4rpx 76.05rpx;
+    border-bottom:1px solid rgb(245, 245, 245);
+    text-align: left;
+    font-size: 25.74rpx;
+}
+.location-menu text{
+    display: inline-block;
+    position: relative;
+    margin-right: 60.84rpx;
+}
+.location-menu .menu-item{
+    color: rgb(14, 142, 231);
+}
+.location-menu .menu-item::after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -23.4rpx;
+    width: 100%;
+    height: 1rpx;
+    background-color: rgb(14, 142, 231);
+}
+.location-content{
+    padding: 23.4rpx 65.52rpx;
+    font-size: 25.74rpx;
+    height: 300rpx;
+    overflow-y: scroll;
+}
+.location-content view{
+    margin-bottom: 58.5rpx;
+}
+.loca-item{
+    color: rgb(14, 142, 231);
+}
+.loca-item::after{
+    content: "L";
+    display: inline-block;
+    position: relative;
+    top: -3rpx;
+    right: -20rpx;
+    font-size: 30rpx;
+    transform:rotateX(180deg) rotate(140deg);
+    color: rgb(14, 142, 231);
+}
+/* 地址组件E */

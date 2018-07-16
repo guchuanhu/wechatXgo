@@ -1,0 +1,12 @@
+<template name="fault-box">
+    <view a:if="{{fault.show}}" class="fault-box">
+        <view class="fault-tip">
+            <view onTap="faultChange" data-index="{{index}}" a:for="{{fault.currentFault.detail}}" class="cen_btn fault-btn {{fault.currentFaultChoice[index]?'fault-btn-item':''}} "> {{item.detailName}} </view>
+        </view>
+        <view class="fault-tip1">
+            <button class="cen_btn fault-btn-sty" type="default"  onTap="faultClose"> 取消 </button>
+            <button class="cen_btn fault-btn-sty fault-btn-sty1" type="default"  onTap="faultSubmit"> 确定 </button>
+        </view>
+    </view>
+</template>
+

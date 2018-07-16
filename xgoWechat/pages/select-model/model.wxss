@@ -1,0 +1,43 @@
+
+.container{
+    width: 100%;
+}
+.lists{
+    margin: auto;
+    padding: 0 23.4rpx;
+}
+.li_box{
+    float: left;
+}
+.li{
+    position:relative;
+    width: 230rpx;
+    height: 87rpx;
+    padding: 50rpx 0;
+    text-align: center; 
+    background-color: white;
+    font-size: 25.74rpx;
+}
+.img_rt{
+  width: 100rpx;
+  height:60rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.img{
+    width: 200rpx;
+    height: 80rpx;
+    background-size: 100%;
+}
+.li_border{
+    border-right: 2rpx solid rgb(187, 187, 187);
+}
+.li_border_btn::after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 3rpx;
+    width: 100%;
+    background-color: rgb(187, 187, 187);
+}
